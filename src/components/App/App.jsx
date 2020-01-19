@@ -3,9 +3,9 @@ import './App.css';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Search from './../Search/Search';
-import { ResultSearch as Result } from './../ResultSearch/ResultSearch';
-import Game from '../Game/Game';
-import NotFound from './../NotFound/NotFound';
+// import { ResultSearch as Result } from './../ResultSearch/ResultSearch';
+// import Game from '../Game/Game';
+// import NotFound from './../NotFound/NotFound';
 
 const App = () => {
 	return (
