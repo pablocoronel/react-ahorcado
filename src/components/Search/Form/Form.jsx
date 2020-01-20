@@ -42,10 +42,7 @@ const FormSearch = (props) => {
 	return (
 		<Row>
 			<Col xs={12} md={{ span: 4, offset: 4 }} id="formulario">
-				<h1>Buscar un artista</h1>
-				<b>{artistName}</b>
-				<br />
-				<b>{trackForPlay}</b>
+				<h1>Buscá una banda o músico</h1>
 
 				<Form onSubmit={handleSubmit}>
 					<Form.Group controlId="exampleForm.ControlInput1">
