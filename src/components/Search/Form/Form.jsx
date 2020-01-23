@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import LASTFM_API_KEY from './../../../config/keys';
+import { LASTFM_API_KEY, SPOTIFY_TOKEN } from './../../../config/keys';
 
 // component
 const FormSearch = (props) => {
 	const [artistName, setArtistName] = useState('');
+	const [artistImage, setArtistImage] = useState('');
 	const [mbid, setMbid] = useState('');
 	const [topTracks, setTopTracks] = useState([]);
 	const [trackForPlay, setTrackForPlay] = useState('');
@@ -13,13 +14,14 @@ const FormSearch = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		searchArtist(e, setArtistName, setMbid);
+		searchArtist(e, setArtistName, setMbid, setArtistImage);
 	};
 
 	// al obtener el artista
 	useEffect(() => {
-		props.artist(artistName);
-	}, [artistName, props]);
+		props.artist({ name: artistName, image: artistImage });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [artistName, artistImage]);
 
 	// obtiene las canciones, mediante el codigo unico de artista
 	useEffect(() => {
@@ -61,29 +63,28 @@ const FormSearch = (props) => {
 	);
 };
 
-const searchArtist = (e, setArtistName, setMbid) => {
+const searchArtist = (e, setArtistName, setMbid, setArtistImage) => {
 	const artist = e.target[0].value;
-	const API_KEY = LASTFM_API_KEY;
 	var url =
-		'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=' +
+		'https://api.spotify.com/v1/search?q=' +
 		artist +
-		'&api_key=' +
-		API_KEY +
-		'&format=json';
+		'&type=artist&limit=5';
 
 	fetch(url, {
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			Authorization: 'Bearer ' + SPOTIFY_TOKEN
 		}
 	})
 		.then((res) => res.json())
 		.catch((error) => console.error('Error:', error))
 		.then((response) => {
-			// console.log('Success:', response.results.artistmatches.artist);
+			console.log('Success:', response);
 
-			if (response.results.artistmatches.artist[0]) {
-				setArtistName(response.results.artistmatches.artist[0].name);
-				setMbid(response.results.artistmatches.artist[0].mbid);
+			if (response.artists.items.length > 0) {
+				setArtistName(response.artists.items[0].name);
+				setMbid(response.artists.items[0].id);
+				setArtistImage(response.artists.items[0].images[0].url);
 			} else {
 				setArtistName('No se encontraron artistas');
 			}

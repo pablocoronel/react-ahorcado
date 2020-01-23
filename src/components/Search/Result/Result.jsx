@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 import './Result.css';
 
 const Result = (props) => {
-	if (props.artist === '') {
+	if (props.artistName === '') {
 		return null;
 	}
 
 	return (
 		<Row>
 			<Col xs={12} md={{ span: 4, offset: 4 }} id="resultados">
-				{props.artist}
+				{props.artistName}
+
+				<img src={props.artistImage} alt={props.artistName} />
 				<Link to="/game">
 					<Button variant="success" renderas="button">
 						<span>Jugar!</span>
