@@ -12,7 +12,7 @@ const Search = () => {
 	return (
 		<div>
 			<Form artist={(value) => handleArtist(value)} />
-			<Result artistName={artist.name} artistImage={artist.image} />
+			<Result artist={artist} />
 		</div>
 	);
 };

@@ -5,30 +5,30 @@ import './Result.css';
 
 const Result = (props) => {
 	console.log(props);
-	if (props.artistName === null) {
+	if (props.artist.name === null) {
 		return null;
 	}
 
 	return (
 		<Row>
 			<Col xs={12} md={{ span: 4, offset: 4 }} id="resultados">
-				<Row id='title'>
-					<Col>{props.artistName}</Col>
+				<Row id="title">
+					<Col>{props.artist.name}</Col>
 				</Row>
 
-				{props.artistImage !== null && (
+				{props.artist.image !== null && (
 					<div>
-						<Row id='image'>
+						<Row id="image">
 							<Col>
 								<Image
-									src={props.artistImage}
+									src={props.artist.image}
 									thumbnail
-									alt={props.artistName}
+									alt={props.artist.name}
 								/>
 							</Col>
 						</Row>
 
-						<Row id='play'>
+						<Row id="play">
 							<Col>
 								<Link to="/game">
 									<Button variant="success" renderas="button">

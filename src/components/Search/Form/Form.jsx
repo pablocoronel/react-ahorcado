@@ -46,7 +46,7 @@ const FormSearch = (props) => {
 				<h1>Buscá un músico</h1>
 
 				<Form onSubmit={handleSubmit}>
-					<Form.Group controlId="ControlInput">
+					<Form.Group>
 						<Form.Control
 							type="text"
 							placeholder="Rolling stones"
@@ -78,7 +78,7 @@ const searchArtist = (e, setArtist) => {
 		.then((response) => {
 			console.log('Success:', response);
 
-			if (response.artists.items.length > 0) {
+			if (response.artists && response.artists.items.length > 0) {
 				setArtist({
 					name: response.artists.items[0].name,
 					id: response.artists.items[0].id,
