@@ -13,7 +13,7 @@ const FormSearch = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		searchArtist(e, setArtist);
+		searchArtist(e, setArtist, artist);
 	};
 
 	// al obtener el artista
@@ -62,7 +62,7 @@ const FormSearch = (props) => {
 	);
 };
 
-const searchArtist = (e, setArtist) => {
+const searchArtist = (e, setArtist, artist) => {
 	const q = e.target[0].value;
 	var url =
 		'https://api.spotify.com/v1/search?q=' + q + '&type=artist&limit=5';
@@ -76,7 +76,7 @@ const searchArtist = (e, setArtist) => {
 		.then((res) => res.json())
 		.catch((error) => console.error('Error:', error))
 		.then((response) => {
-			console.log('Success:', response);
+			// console.log('Success:', response);
 
 			if (response.artists && response.artists.items.length > 0) {
 				setArtist({
@@ -85,11 +85,7 @@ const searchArtist = (e, setArtist) => {
 					image: response.artists.items[0].images[0].url
 				});
 			} else {
-				setArtist({
-					name: 'No se encontraron artistas',
-					image: null,
-					id: null
-				});
+				setArtist({ ...artist, name: 'No se encontraron artistas' });
 			}
 		});
 };
