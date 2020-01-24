@@ -1,9 +1,17 @@
 #resultados{
     background-color: cyan !important;
-    height: 30vh;
+    height: 40vh;
     margin-top: 15vh;
     text-align: center;
 }
 h1{
     color: cornsilk;
+}
+
+img{
+    max-height: 25vh;
+}
+
+#play{
+    margin-top: 1vw;
 }
