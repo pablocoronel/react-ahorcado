@@ -76,8 +76,6 @@ const searchArtist = (e, setArtist, artist) => {
 		.then((res) => res.json())
 		.catch((error) => console.error('Error:', error))
 		.then((response) => {
-			// console.log('Success:', response);
-
 			if (response.artists && response.artists.items.length > 0) {
 				setArtist({
 					name: response.artists.items[0].name,
