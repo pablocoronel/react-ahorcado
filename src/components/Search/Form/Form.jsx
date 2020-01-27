@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import { LASTFM_API_KEY, SPOTIFY_TOKEN } from './../../../config/keys';
+import { SPOTIFY_TOKEN } from './../../../config/keys';
 
 // component
 const FormSearch = (props) => {
 	const [artist, setArtist] = useState({ name: null, image: null, id: null });
-
-	// const [topTracks, setTopTracks] = useState([]);
-	// const [trackForPlay, setTrackForPlay] = useState('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -21,24 +18,6 @@ const FormSearch = (props) => {
 		props.artist({ name: artist.name, image: artist.image, id: artist.id });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [artist]);
-
-	// obtiene las canciones, mediante el codigo unico de artista
-	// useEffect(() => {
-	// 	if (idArtist !== '') {
-	// 		searchTracks(idArtist, setTopTracks);
-	// 	}
-	// }, [idArtist]);
-
-	// elije el tema para el juego
-	// useEffect(() => {
-	// 	if (topTracks.length > 0) {
-	// 		const randomTrackIndex = Math.round(
-	// 			Math.random() * topTracks.length
-	// 		);
-
-	// 		setTrackForPlay(topTracks[randomTrackIndex].name);
-	// 	}
-	// }, [topTracks]);
 
 	return (
 		<Row>
@@ -76,6 +55,8 @@ const searchArtist = (e, setArtist, artist) => {
 		.then((res) => res.json())
 		.catch((error) => console.error('Error:', error))
 		.then((response) => {
+			// console.log('Success:', response);
+
 			if (response.artists && response.artists.items.length > 0) {
 				setArtist({
 					name: response.artists.items[0].name,
@@ -87,31 +68,5 @@ const searchArtist = (e, setArtist, artist) => {
 			}
 		});
 };
-
-// mover funcion arriba y pasarla a spotify, cambiar idArtist a id
-// const searchTracks = (idArtist, setTopTracks) => {
-// 	const API_KEY = LASTFM_API_KEY;
-// 	var url =
-// 		'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&idArtist=' +
-// 		idArtist +
-// 		'&api_key=' +
-// 		API_KEY +
-// 		'&format=json';
-
-// 	fetch(url, {
-// 		headers: {
-// 			'Content-Type': 'application/json'
-// 		}
-// 	})
-// 		.then((res) => res.json())
-// 		.catch((error) => console.error('Error:', error))
-// 		.then((response) => {
-// 			// console.log('Success:', response);
-
-// 			if (response.toptracks) {
-// 				setTopTracks(response.toptracks.track);
-// 			}
-// 		});
-// };
 
 export default FormSearch;

@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import Context from './context';
 
-const Provider = (props) => {
-	const [state, setContextState] = useState({});
+let persistedState = { idArtist: null, trackArtist: null };
 
-	return (
-		<Context.Provider
-			value={{
-				state,
-				updateIdArtist: (id) => {
-					setContextState({ ...state, idArtist: id });
-				}
-			}}
-		>
-			{props.children}
-		</Context.Provider>
-	);
+const Provider = (props) => {
+	const [state, setContextState] = useState(persistedState);
+
+	const value = {
+		state,
+		updateIdArtist: (id) => {
+			persistedState = { ...persistedState, idArtist: id };
+			setContextState(persistedState);
+		},
+		updateTrackArtist: (track) => {
+			persistedState = { ...persistedState, trackArtist: track };
+			setContextState(persistedState);
+		}
+	};
+
+	return <Context.Provider value={value}>{props.children}</Context.Provider>;
 };
 
 export default Provider;
