@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Context from './context';
 
-let persistedState = { idArtist: null, trackArtist: null };
+let persistedState = { idArtist: null, trackArtist: '' };
 
 const Provider = (props) => {
 	const [state, setContextState] = useState(persistedState);

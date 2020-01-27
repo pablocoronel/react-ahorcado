@@ -7,11 +7,25 @@ const Game = (props) => {
 	return (
 		<Context.Consumer>
 			{(context) => {
-				console.log(context);
+				const track = context.state.trackArtist;
+				const words = track.toUpperCase().split(' ');
+				let hiddenTrack = [];
+
+				console.log(hiddenTrack);
+
 				return (
 					<Row id="wrapper">
-						<Col>{context.state.idArtist}</Col>
-						<Col>{context.state.trackArtist}</Col>
+						<Col>{track}</Col>
+
+						{words.map((word) => {
+							return word
+								.split('')
+								.map((letter) => {
+									hiddenTrack.push(letter);
+									return '_'.concat(' ');
+								})
+								.concat('B');
+						})}
 					</Row>
 				);
 			}}
