@@ -10,33 +10,12 @@ const Result = (props) => {
 		return null;
 	}
 
-	// const [topTracks, setTopTracks] = useState([]);
-	// const [trackForPlay, setTrackForPlay] = useState('');
-
 	const handlePlay = (e, updateIdArtist, updateTrackArtist) => {
 		// actualiza en context state
 		updateIdArtist(props.artist.id);
 
 		searchRandomTrack(props.artist.id, updateTrackArtist);
 	};
-
-	// obtiene las canciones, mediante el codigo unico de artista
-	// useEffect(() => {
-	// 	if (idArtist !== '') {
-	// 		searchTracks(idArtist, setTopTracks);
-	// 	}
-	// }, [idArtist]);
-
-	// elije el tema para el juego
-	// useEffect(() => {
-	// 	if (topTracks.length > 0) {
-	// 		const randomTrackIndex = Math.round(
-	// 			Math.random() * topTracks.length
-	// 		);
-
-	// 		setTrackForPlay(topTracks[randomTrackIndex].name);
-	// 	}
-	// }, [topTracks]);
 
 	return (
 		<Context.Consumer>

@@ -7,7 +7,7 @@ const Game = (props) => {
 	return (
 		<Context.Consumer>
 			{(context) => {
-				console.log(context)
+				console.log(context);
 				return (
 					<Row id="wrapper">
 						<Col>{context.state.idArtist}</Col>
