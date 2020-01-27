@@ -94,7 +94,7 @@ const searchRandomTrack = (idArtist, updateTrackArtist) => {
 			// console.log('Success top tracks:', response);
 
 			if (response.tracks.length > 0) {
-				const randomTrackIndex = Math.round(
+				const randomTrackIndex = Math.floor(
 					Math.random() * response.tracks.length
 				);
 
