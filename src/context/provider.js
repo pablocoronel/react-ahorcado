@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import Context from './context';
 
-let persistedState = { idArtist: null, trackArtist: '', chosenLetters: [] };
+let persistedState = {
+	idArtist: null,
+	trackArtist: '',
+	chosenLetters: [],
+	attempts: 0
+};
 
 const Provider = (props) => {
 	const [state, setContextState] = useState(persistedState);
@@ -13,11 +18,20 @@ const Provider = (props) => {
 			setContextState(persistedState);
 		},
 		updateTrackArtist: (track) => {
-			persistedState = { ...persistedState, trackArtist: track };
+			persistedState = {
+				...persistedState,
+				trackArtist: track,
+				chosenLetters: [],
+				attempts: 0
+			};
 			setContextState(persistedState);
 		},
 		updateChosenLetters: (letters) => {
-			persistedState = { ...persistedState, chosenLetters: letters };
+			persistedState = {
+				...persistedState,
+				chosenLetters: letters,
+				attempts: persistedState.attempts++
+			};
 			setContextState(persistedState);
 		}
 	};

@@ -95,7 +95,9 @@ const searchRandomTrack = (idArtist, updateTrackArtist) => {
 					Math.random() * response.tracks.length
 				);
 
-				updateTrackArtist(response.tracks[randomTrackIndex].name);
+				updateTrackArtist(
+					response.tracks[randomTrackIndex].name.toUpperCase()
+				);
 			}
 		});
 };

@@ -8,19 +8,27 @@ const Word = () => {
 			{(context) => {
 				const track = context.state.trackArtist;
 				const words = track.toUpperCase().split(' ');
-				let hiddenTrack = [];
+				const chosenLetters = context.state.chosenLetters;
 
-				console.log(context.state.chosenLetters);
+				console.log(context.state.trackArtist);
+				console.log(chosenLetters);
 				return (
 					<div id="container-word">
 						{words.map((word) => {
 							return word
 								.split('')
 								.map((letter) => {
-									hiddenTrack.push(letter);
-									return '_'.concat(' ');
+									if (
+										chosenLetters.some(
+											(item) => item === letter
+										)
+									) {
+										return letter;
+									} else {
+										return '_'.concat(' ');
+									}
 								})
-								.concat('B');
+								.concat(' ');
 						})}
 					</div>
 				);

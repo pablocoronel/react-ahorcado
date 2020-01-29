@@ -2,14 +2,42 @@ import React, { useState } from 'react';
 import './Keyboard.css';
 import Context from './../../../context/context';
 
-const letters = ['A', 'B', 'C'];
+const letters = [
+	'q',
+	'w',
+	'e',
+	'r',
+	't',
+	'y',
+	'u',
+	'i',
+	'o',
+	'p',
+	'a',
+	's',
+	'd',
+	'f',
+	'g',
+	'h',
+	'j',
+	'k',
+	'l',
+	'z',
+	'x',
+	'c',
+	'v',
+	'b',
+	'n',
+	'ñ',
+	'm'
+];
 const initialKeys = [];
 
 // set keyboard with letters
 letters
 	.map((letter, index) =>
 		initialKeys.push({
-			value: letter,
+			value: letter.toUpperCase(),
 			disabled: false,
 			order: index
 		})
@@ -49,7 +77,12 @@ const Keyboard = () => {
 					keys.map((key) => (
 						<div
 							className={
-								'key ' + (key.disabled ? 'disabledKey' : '')
+								'key ' +
+								(context.state.chosenLetters.some(
+									(item) => item === key.value
+								)
+									? 'disabledKey'
+									: '')
 							}
 							key={'key-' + key.value}
 							onClick={() =>
@@ -60,7 +93,7 @@ const Keyboard = () => {
 								)
 							}
 						>
-							{key.value + '-' + key.disabled}
+							{key.value}
 						</div>
 					))
 				}
