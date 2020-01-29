@@ -14,38 +14,35 @@ const Result = (props) => {
 		// actualiza en context state
 		updateIdArtist(props.artist.id);
 
+		// dentro de la funcion, actualiza en context state
 		searchRandomTrack(props.artist.id, updateTrackArtist);
 	};
 
 	return (
-		<Context.Consumer>
-			{(context) => {
-				return (
-					<Row>
-						<Col
-							xs={12}
-							md={{ span: 4, offset: 4 }}
-							id="resultados"
-						>
-							<Row id="title">
-								<Col>{props.artist.name}</Col>
-							</Row>
+		<Row>
+			<Col xs={12} md={{ span: 4, offset: 4 }} id="resultados">
+				<Row id="title">
+					<Col>{props.artist.name}</Col>
+				</Row>
 
-							{props.artist.image !== null && (
-								<div>
-									<Row id="image">
-										<Col>
-											<Image
-												src={props.artist.image}
-												thumbnail
-												alt={props.artist.name}
-											/>
-										</Col>
-									</Row>
+				{props.artist.image !== null && (
+					<div>
+						<Row id="image">
+							<Col>
+								<Image
+									src={props.artist.image}
+									thumbnail
+									alt={props.artist.name}
+								/>
+							</Col>
+						</Row>
 
-									<Row id="play">
-										<Col>
-											<Link to="/game">
+						<Row id="play">
+							<Col>
+								<Link to="/game">
+									<Context.Consumer>
+										{(context) => {
+											return (
 												<Button
 													variant="success"
 													renderas="button"
@@ -63,16 +60,16 @@ const Result = (props) => {
 												>
 													<span>Jugar!</span>
 												</Button>
-											</Link>
-										</Col>
-									</Row>
-								</div>
-							)}
-						</Col>
-					</Row>
-				);
-			}}
-		</Context.Consumer>
+											);
+										}}
+									</Context.Consumer>
+								</Link>
+							</Col>
+						</Row>
+					</div>
+				)}
+			</Col>
+		</Row>
 	);
 };
 

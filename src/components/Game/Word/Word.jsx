@@ -10,8 +10,7 @@ const Word = () => {
 				const words = track.toUpperCase().split(' ');
 				let hiddenTrack = [];
 
-				console.log(hiddenTrack);
-
+				console.log(context.state.chosenLetters);
 				return (
 					<div id="container-word">
 						{words.map((word) => {
