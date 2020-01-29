@@ -5,7 +5,7 @@ let persistedState = {
 	idArtist: null,
 	trackArtist: '',
 	chosenLetters: [],
-	attempts: 0
+	failedAttempts: 0
 };
 
 const Provider = (props) => {
@@ -22,15 +22,21 @@ const Provider = (props) => {
 				...persistedState,
 				trackArtist: track,
 				chosenLetters: [],
-				attempts: 0
+				failedAttempts: 0
 			};
 			setContextState(persistedState);
 		},
 		updateChosenLetters: (letters) => {
 			persistedState = {
 				...persistedState,
-				chosenLetters: letters,
-				attempts: persistedState.attempts++
+				chosenLetters: letters
+			};
+			setContextState(persistedState);
+		},
+		updateFailedAttempts: () => {
+			persistedState = {
+				...persistedState,
+				failedAttempts: ++persistedState.failedAttempts
 			};
 			setContextState(persistedState);
 		}

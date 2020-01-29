@@ -48,7 +48,9 @@ letters
 const Keyboard = () => {
 	const [keys, setKeys] = useState(initialKeys);
 
-	const handleTouchedKey = (letter, contextFunction, chosenLetters) => {
+	const handleTouchedKey = (letter, context) => {
+		const chosenLetters = context.state.chosenLetters;
+
 		// no repeated letters
 		if (chosenLetters.length > 0) {
 			if (chosenLetters.some((item) => item === letter)) {
@@ -63,11 +65,18 @@ const Keyboard = () => {
 		newKeys.push(key);
 		newKeys.sort((a, b) => a.order - b.order);
 
+		// update local state
 		setKeys(newKeys);
 
-		// context state
+		// update chosen letters in context state
 		const newChosenLetters = [...chosenLetters, letter];
-		contextFunction(newChosenLetters);
+		context.updateChosenLetters(newChosenLetters);
+
+		// update failed attempts in context state
+		const noExists = context.state.trackArtist.search(letter);
+		if (noExists < 0) {
+			context.updateFailedAttempts();
+		}
 	};
 
 	return (
@@ -85,13 +94,7 @@ const Keyboard = () => {
 									: '')
 							}
 							key={'key-' + key.value}
-							onClick={() =>
-								handleTouchedKey(
-									key.value,
-									context.updateChosenLetters,
-									context.state.chosenLetters
-								)
-							}
+							onClick={() => handleTouchedKey(key.value, context)}
 						>
 							{key.value}
 						</div>
