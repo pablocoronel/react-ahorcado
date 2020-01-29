@@ -1,35 +1,30 @@
 import React from 'react';
-import Context from '../../context/context';
 import { Row, Col } from 'react-bootstrap';
 import './Game.css';
+import Person from './Person/Person';
+import Word from './Word/Word';
+import Keyboard from './Keyboard/Keyboard';
 
 const Game = (props) => {
 	return (
-		<Context.Consumer>
-			{(context) => {
-				const track = context.state.trackArtist;
-				const words = track.toUpperCase().split(' ');
-				let hiddenTrack = [];
+		<Row id="wrapper">
+			<Col xs={12} md={4}>
+				<Person />
+			</Col>
 
-				console.log(hiddenTrack);
-
-				return (
-					<Row id="wrapper">
-						<Col>{track}</Col>
-
-						{words.map((word) => {
-							return word
-								.split('')
-								.map((letter) => {
-									hiddenTrack.push(letter);
-									return '_'.concat(' ');
-								})
-								.concat('B');
-						})}
-					</Row>
-				);
-			}}
-		</Context.Consumer>
+			<Col xs={12} md={8}>
+				<Row>
+					<Col>
+						<Word />
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<Keyboard />
+					</Col>
+				</Row>
+			</Col>
+		</Row>
 	);
 };
 

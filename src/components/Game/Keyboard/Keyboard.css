@@ -1,0 +1,15 @@
+#container-keyboard {
+	background-color: steelblue;
+	position: relative;
+	height: 50vh;
+}
+
+.key {
+	background-color: tan;
+	height: 10vh;
+	width: 50px;
+}
+
+.disabledKey {
+	background-color: tomato;
+}

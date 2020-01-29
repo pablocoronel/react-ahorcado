@@ -1,0 +1,6 @@
+#container-person {
+	background-color: goldenrod;
+	display: flex;
+	align-items: center;
+	height: 100vh;
+}
