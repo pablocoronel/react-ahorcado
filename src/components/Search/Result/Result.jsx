@@ -2,72 +2,81 @@ import React from 'react';
 import { Row, Col, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Result.css';
+import noImage from './../../../assets/images/no-image.png';
 import Context from '../../../context/context';
 import { SPOTIFY_TOKEN } from './../../../config/keys';
 
 const Result = (props) => {
-	if (props.artist.name === null) {
+	if (props.artist.length < 1) {
 		return null;
 	}
 
-	const handlePlay = (e, updateIdArtist, updateTrackArtist) => {
+	const handlePlay = (e, idArtist, updateIdArtist, updateTrackArtist) => {
 		// actualiza en context state
-		updateIdArtist(props.artist.id);
+		updateIdArtist(idArtist);
 
 		// dentro de la funcion, actualiza en context state
-		searchRandomTrack(props.artist.id, updateTrackArtist);
+		searchRandomTrack(idArtist, updateTrackArtist);
 	};
 
 	return (
 		<Row>
 			<Col xs={12} md={{ span: 4, offset: 4 }} id="resultados">
-				<Row id="title">
-					<Col>{props.artist.name}</Col>
-				</Row>
+				<Context.Consumer>
+					{(context) =>
+						props.artist.map((artist) => (
+							<div key={'artist-' + artist.id}>
+								<Row id="title">
+									<Col>{artist.name}</Col>
+								</Row>
 
-				{props.artist.image !== null && (
-					<div>
-						<Row id="image">
-							<Col>
-								<Image
-									src={props.artist.image}
-									thumbnail
-									alt={props.artist.name}
-								/>
-							</Col>
-						</Row>
-
-						<Row id="play">
-							<Col>
-								<Link to="/game">
-									<Context.Consumer>
-										{(context) => {
-											return (
-												<Button
-													variant="success"
-													renderas="button"
-													onClick={(
-														event,
-														updateIdArtist = context.updateIdArtist,
-														updateTrackArtist = context.updateTrackArtist
-													) =>
-														handlePlay(
-															event,
-															updateIdArtist,
-															updateTrackArtist
-														)
+								{artist.id !== null && (
+									<div>
+										<Row id="image">
+											<Col>
+												<Image
+													src={
+														artist.image !== null
+															? artist.image
+															: noImage
 													}
-												>
-													<span>Jugar!</span>
-												</Button>
-											);
-										}}
-									</Context.Consumer>
-								</Link>
-							</Col>
-						</Row>
-					</div>
-				)}
+													thumbnail
+													alt={artist.name}
+												/>
+											</Col>
+										</Row>
+
+										<Row id="play">
+											<Col>
+												<Link to="/game">
+													<Button
+														variant="success"
+														renderas="button"
+														onClick={(
+															event,
+															idArtist = artist.id,
+															updateIdArtist = context.updateIdArtist,
+															updateTrackArtist = context.updateTrackArtist
+														) =>
+															handlePlay(
+																event,
+																idArtist,
+																updateIdArtist,
+																updateTrackArtist
+															)
+														}
+													>
+														<span>Jugar!</span>
+													</Button>
+												</Link>
+											</Col>
+										</Row>
+									</div>
+								)}
+							</div>
+						))
+					}
+				</Context.Consumer>
 			</Col>
 		</Row>
 	);

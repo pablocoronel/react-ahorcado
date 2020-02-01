@@ -5,17 +5,17 @@ import { SPOTIFY_TOKEN } from './../../../config/keys';
 
 // component
 const FormSearch = (props) => {
-	const [artist, setArtist] = useState({ name: null, image: null, id: null });
+	const [artist, setArtist] = useState([]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		searchArtist(e, setArtist, artist);
+		searchArtist(e, setArtist);
 	};
 
 	// al obtener el artista
 	useEffect(() => {
-		props.artist({ name: artist.name, image: artist.image, id: artist.id });
+		props.artist(artist);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [artist]);
 
@@ -41,7 +41,7 @@ const FormSearch = (props) => {
 	);
 };
 
-const searchArtist = (e, setArtist, artist) => {
+const searchArtist = (e, setArtist) => {
 	const q = e.target[0].value;
 	var url =
 		'https://api.spotify.com/v1/search?q=' + q + '&type=artist&limit=5';
@@ -58,13 +58,28 @@ const searchArtist = (e, setArtist, artist) => {
 			// console.log('Success:', response);
 
 			if (response.artists && response.artists.items.length > 0) {
-				setArtist({
-					name: response.artists.items[0].name,
-					id: response.artists.items[0].id,
-					image: response.artists.items[0].images[0].url
+				const result = [];
+
+				response.artists.items.map((item) => {
+					const itemResult = {
+						name: item.name,
+						id: item.id,
+						image:
+							item.images.length > 0 ? item.images[0].url : null
+					};
+
+					return result.push(itemResult);
 				});
+
+				setArtist(result);
 			} else {
-				setArtist({ ...artist, name: 'No se encontraron artistas' });
+				setArtist([
+					{
+						name: 'No se encontraron artistas',
+						id: null,
+						image: null
+					}
+				]);
 			}
 		});
 };

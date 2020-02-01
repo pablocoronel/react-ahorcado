@@ -3,7 +3,7 @@ import Form from './Form/Form';
 import Result from './Result/Result';
 
 const Search = () => {
-	const [artist, setArtist] = useState({});
+	const [artist, setArtist] = useState([]);
 
 	const handleArtist = (value) => {
 		setArtist(value);
