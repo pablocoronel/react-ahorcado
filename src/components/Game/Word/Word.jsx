@@ -6,16 +6,17 @@ const Word = () => {
 	return (
 		<Context.Consumer>
 			{(context) => {
-				const track = context.state.trackArtist;
-				const words = track.toUpperCase().split(' ');
+				const words = context.state.trackArtist
+					.toUpperCase()
+					.split(' ');
 				const chosenLetters = context.state.chosenLetters;
 
 				console.log(context.state.trackArtist);
 				console.log(chosenLetters);
 				return (
 					<div id="container-word">
-						{words.map((word) => {
-							return word
+						{words.map((word) =>
+							word
 								.split('')
 								.map((letter) => {
 									if (
@@ -28,8 +29,8 @@ const Word = () => {
 										return '_'.concat(' ');
 									}
 								})
-								.concat(' ');
-						})}
+								.concat(' ')
+						)}
 					</div>
 				);
 			}}
