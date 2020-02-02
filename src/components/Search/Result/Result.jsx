@@ -11,12 +11,9 @@ const Result = (props) => {
 		return null;
 	}
 
-	const handlePlay = (e, idArtist, updateIdArtist, updateTrackArtist) => {
-		// actualiza en context state
-		updateIdArtist(idArtist);
-
+	const handlePlay = (e, idArtist, updateInfoTrackArtist) => {
 		// dentro de la funcion, actualiza en context state
-		searchRandomTrack(idArtist, updateTrackArtist);
+		searchRandomTrack(idArtist, updateInfoTrackArtist);
 	};
 
 	return (
@@ -55,14 +52,12 @@ const Result = (props) => {
 														onClick={(
 															event,
 															idArtist = artist.id,
-															updateIdArtist = context.updateIdArtist,
-															updateTrackArtist = context.updateTrackArtist
+															updateInfoTrackArtist = context.updateInfoTrackArtist
 														) =>
 															handlePlay(
 																event,
 																idArtist,
-																updateIdArtist,
-																updateTrackArtist
+																updateInfoTrackArtist
 															)
 														}
 													>
@@ -82,7 +77,7 @@ const Result = (props) => {
 	);
 };
 
-const searchRandomTrack = (idArtist, updateTrackArtist) => {
+const searchRandomTrack = (idArtist, updateInfoTrackArtist) => {
 	var url =
 		'https://api.spotify.com/v1/artists/' +
 		idArtist +
@@ -104,9 +99,13 @@ const searchRandomTrack = (idArtist, updateTrackArtist) => {
 					Math.random() * response.tracks.length
 				);
 
-				updateTrackArtist(
-					response.tracks[randomTrackIndex].name.toUpperCase()
-				);
+				const track = response.tracks[
+					randomTrackIndex
+				].name.toUpperCase();
+
+				const longOfWord = track.replace(' ', '').split('').length - 1;
+
+				updateInfoTrackArtist(idArtist, track, longOfWord);
 			}
 		});
 };

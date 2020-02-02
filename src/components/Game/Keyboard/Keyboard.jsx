@@ -58,24 +58,40 @@ const Keyboard = () => {
 			}
 		}
 
-		const key = keys.find((key) => key.value === letter);
-		key.disabled = true;
+		const selectedKey = keys.find((key) => key.value === letter);
+		selectedKey.disabled = true;
 
-		const newKeys = keys.filter((key) => key.value !== letter);
-		newKeys.push(key);
-		newKeys.sort((a, b) => a.order - b.order);
+		const updatedKeys = keys.filter((key) => key.value !== letter);
+		updatedKeys.push(selectedKey);
+		updatedKeys.sort((a, b) => a.order - b.order);
 
 		// update local state
-		setKeys(newKeys);
+		setKeys(updatedKeys);
 
 		// update chosen letters in context state
 		const newChosenLetters = [...chosenLetters, letter];
 		context.updateChosenLetters(newChosenLetters);
 
 		// update failed attempts in context state
-		const noExists = context.state.trackArtist.search(letter);
-		if (noExists < 0) {
+		const letterInTrack = context.state.trackArtist.match(letter);
+		console.log('turno si: ' + letterInTrack);
+
+		if (letterInTrack === null) {
 			context.updateFailedAttempts();
+		} else {
+			console.log('sumar: ' + letterInTrack.length);
+			context.updatedGuessedLetters(letterInTrack.length);
+		}
+
+		console.log('largo palabra: ' + context.state.longOfWord);
+		console.log('adivinaron: ' + context.state.guessedLetters);
+
+		// lost?
+		if (context.state.failedAttempts >= 7) {
+			context.updatedResultGame(false);
+		} else if (context.state.guessedLetters >= context.state.longOfWord) {
+			// won?
+			context.updatedResultGame(true);
 		}
 	};
 

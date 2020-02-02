@@ -4,8 +4,11 @@ import Context from './context';
 let persistedState = {
 	idArtist: null,
 	trackArtist: '',
+	longOfWord: 0,
 	chosenLetters: [],
-	failedAttempts: 0
+	failedAttempts: 0,
+	guessedLetters: 0,
+	resultGame: null
 };
 
 const Provider = (props) => {
@@ -13,14 +16,12 @@ const Provider = (props) => {
 
 	const value = {
 		state,
-		updateIdArtist: (id) => {
-			persistedState = { ...persistedState, idArtist: id };
-			setContextState(persistedState);
-		},
-		updateTrackArtist: (track) => {
+		updateInfoTrackArtist: (id, track, longOfWord) => {
 			persistedState = {
 				...persistedState,
+				idArtist: id,
 				trackArtist: track,
+				longOfWord: longOfWord,
 				chosenLetters: [],
 				failedAttempts: 0
 			};
@@ -38,6 +39,16 @@ const Provider = (props) => {
 				...persistedState,
 				failedAttempts: ++persistedState.failedAttempts
 			};
+			setContextState(persistedState);
+		},
+		updatedGuessedLetters: (quantity) => {
+			persistedState = {
+				...persistedState,
+				guessedLetters: persistedState.guessedLetters + quantity
+			};
+		},
+		updatedResultGame: (result) => {
+			persistedState = { ...persistedState, resultGame: result };
 			setContextState(persistedState);
 		}
 	};

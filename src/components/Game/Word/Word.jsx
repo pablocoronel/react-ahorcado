@@ -13,6 +13,7 @@ const Word = () => {
 
 				console.log(context.state.trackArtist);
 				console.log(chosenLetters);
+				console.log(context.state.resultGame);
 				return (
 					<div id="container-word">
 						{words.map((word) =>
