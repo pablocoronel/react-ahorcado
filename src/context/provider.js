@@ -23,7 +23,9 @@ const Provider = (props) => {
 				trackArtist: track,
 				longOfWord: longOfWord,
 				chosenLetters: [],
-				failedAttempts: 0
+				failedAttempts: 0,
+				guessedLetters: 0,
+				resultGame: null
 			};
 			setContextState(persistedState);
 		},
@@ -46,6 +48,7 @@ const Provider = (props) => {
 				...persistedState,
 				guessedLetters: persistedState.guessedLetters + quantity
 			};
+			setContextState(persistedState);
 		},
 		updatedResultGame: (result) => {
 			persistedState = { ...persistedState, resultGame: result };

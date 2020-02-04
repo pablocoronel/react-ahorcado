@@ -103,7 +103,9 @@ const searchRandomTrack = (idArtist, updateInfoTrackArtist) => {
 					randomTrackIndex
 				].name.toUpperCase();
 
-				const longOfWord = track.replace(' ', '').split('').length - 1;
+				const longOfWord = track
+					.replace(new RegExp(' ', 'g'), '')
+					.split('').length;
 
 				updateInfoTrackArtist(idArtist, track, longOfWord);
 			}

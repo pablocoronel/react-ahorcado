@@ -73,24 +73,22 @@ const Keyboard = () => {
 		context.updateChosenLetters(newChosenLetters);
 
 		// update failed attempts in context state
-		const letterInTrack = context.state.trackArtist.match(letter);
-		console.log('turno si: ' + letterInTrack);
+		const letterInTrack = context.state.trackArtist.match(
+			new RegExp(letter, 'g')
+		);
 
+		// update count of guessed letters
 		if (letterInTrack === null) {
 			context.updateFailedAttempts();
 		} else {
-			console.log('sumar: ' + letterInTrack.length);
 			context.updatedGuessedLetters(letterInTrack.length);
 		}
 
-		console.log('largo palabra: ' + context.state.longOfWord);
-		console.log('adivinaron: ' + context.state.guessedLetters);
-
-		// lost?
+		// lost
 		if (context.state.failedAttempts >= 7) {
 			context.updatedResultGame(false);
 		} else if (context.state.guessedLetters >= context.state.longOfWord) {
-			// won?
+			// won
 			context.updatedResultGame(true);
 		}
 	};
