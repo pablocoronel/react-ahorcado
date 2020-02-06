@@ -68,8 +68,13 @@ const Keyboard = () => {
 		// update local state
 		setKeys(updatedKeys);
 
+		// data in context
+		contextAttempts(letter, context);
+	};
+
+	const contextAttempts = (letter, context) => {
 		// update chosen letters in context state
-		const newChosenLetters = [...chosenLetters, letter];
+		const newChosenLetters = [...context.state.chosenLetters, letter];
 		context.updateChosenLetters(newChosenLetters);
 
 		// update failed attempts in context state
@@ -80,16 +85,37 @@ const Keyboard = () => {
 		// update count of guessed letters
 		if (letterInTrack === null) {
 			context.updateFailedAttempts();
+
+			if (context.state.resultGame === null)
+				contextResultGame(context, 'fail', 1);
 		} else {
 			context.updatedGuessedLetters(letterInTrack.length);
-		}
 
-		// lost
-		if (context.state.failedAttempts >= 7) {
-			context.updatedResultGame(false);
-		} else if (context.state.guessedLetters >= context.state.longOfWord) {
-			// won
-			context.updatedResultGame(true);
+			if (context.state.resultGame === null)
+				contextResultGame(context, 'correct', letterInTrack.length);
+		}
+	};
+
+	const contextResultGame = (context, attempt, quantity) => {
+		switch (attempt) {
+			case 'fail':
+				if (context.state.failedAttempts + quantity >= 7) {
+					context.updatedResultGame(false);
+				}
+				break;
+
+			case 'correct':
+				if (
+					context.state.longOfWord > 0 &&
+					context.state.guessedLetters + quantity >=
+						context.state.longOfWord
+				) {
+					context.updatedResultGame(true);
+				}
+				break;
+
+			default:
+				break;
 		}
 	};
 
