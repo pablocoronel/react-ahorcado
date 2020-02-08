@@ -122,8 +122,13 @@ const Keyboard = () => {
 	return (
 		<div id="container-keyboard">
 			<Context.Consumer>
-				{(context) =>
-					keys.map((key) => (
+				{(context) => {
+					// won or lose
+					if (context.state.resultGame != null) {
+						return;
+					}
+
+					return keys.map((key) => (
 						<div
 							className={
 								'key ' +
@@ -138,8 +143,8 @@ const Keyboard = () => {
 						>
 							{key.value}
 						</div>
-					))
-				}
+					));
+				}}
 			</Context.Consumer>
 		</div>
 	);

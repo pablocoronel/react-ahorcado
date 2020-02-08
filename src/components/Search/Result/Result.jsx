@@ -99,9 +99,10 @@ const searchRandomTrack = (idArtist, updateInfoTrackArtist) => {
 					Math.random() * response.tracks.length
 				);
 
-				const track = response.tracks[
-					randomTrackIndex
-				].name.toUpperCase();
+				const track = response.tracks[randomTrackIndex].name
+					.toUpperCase()
+					.normalize('NFD')
+					.replace(/[\u0300-\u036f]/g, '');
 
 				const longOfWord = track
 					.replace(new RegExp(' ', 'g'), '')
