@@ -1,5 +1,6 @@
 #container-person {
 	background-color: goldenrod;
+	background-image: url('../../../assets/images/paper.png');
 	display: flex;
 	align-items: center;
 	height: 100vh;

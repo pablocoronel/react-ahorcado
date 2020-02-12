@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Keyboard.css';
 import Context from './../../../context/context';
+import { Button } from 'react-bootstrap';
 
 const letters = [
 	'q',
@@ -125,7 +126,11 @@ const Keyboard = () => {
 				{(context) => {
 					// won or lose
 					if (context.state.resultGame != null) {
-						return;
+						return (
+							<div>
+								<Button href="/">Jugar de nuevo</Button>
+							</div>
+						);
 					}
 
 					return keys.map((key) => (
