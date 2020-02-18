@@ -1,7 +1,12 @@
 #container-person {
-	background-color: goldenrod;
-	background-image: url('../../../assets/images/paper.png');
+	background-color: transparent;
 	display: flex;
 	align-items: center;
 	height: 100vh;
+}
+
+@media(max-width: 768px){
+	#container-person {
+		height: 40vh;
+	}
 }

@@ -1,7 +1,13 @@
 #container-keyboard {
-	background-color: steelblue;
+	background-color: transparent;
 	position: relative;
 	height: 50vh;
+}
+
+@media (max-width: 768px) {
+	#container-keyboard {
+		height: 40vh;
+	}
 }
 
 .key {
