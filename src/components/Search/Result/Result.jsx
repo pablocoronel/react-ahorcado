@@ -92,12 +92,14 @@ const searchRandomTrack = (idArtist, updateInfoTrackArtist) => {
 		.then((res) => res.json())
 		.catch((error) => console.error('Error:', error))
 		.then((response) => {
-			// console.log('Success top tracks:', response);
+			console.log('Success top tracks:', response);
 
 			if (response.tracks.length > 0) {
 				const randomTrackIndex = Math.floor(
 					Math.random() * response.tracks.length
 				);
+
+				const name = response.tracks[randomTrackIndex].artists[0].name;
 
 				const track = response.tracks[randomTrackIndex].name
 					.toUpperCase()
@@ -108,7 +110,7 @@ const searchRandomTrack = (idArtist, updateInfoTrackArtist) => {
 					.replace(new RegExp(' ', 'g'), '')
 					.split('').length;
 
-				updateInfoTrackArtist(idArtist, track, longOfWord);
+				updateInfoTrackArtist(idArtist, name, track, longOfWord);
 			}
 		});
 };

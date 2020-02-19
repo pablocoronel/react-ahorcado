@@ -3,6 +3,7 @@ import Context from './context';
 
 let persistedState = {
 	idArtist: null,
+	nameArtist: '',
 	trackArtist: '',
 	longOfWord: 0,
 	chosenLetters: [],
@@ -16,10 +17,11 @@ const Provider = (props) => {
 
 	const value = {
 		state,
-		updateInfoTrackArtist: (id, track, longOfWord) => {
+		updateInfoTrackArtist: (id, name, track, longOfWord) => {
 			persistedState = {
 				...persistedState,
 				idArtist: id,
+				nameArtist: name,
 				trackArtist: track,
 				longOfWord: longOfWord,
 				chosenLetters: [],

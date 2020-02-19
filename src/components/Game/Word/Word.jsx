@@ -13,6 +13,9 @@ const Word = () => {
 
 				return (
 					<div id="container-word">
+						<div>
+							{context.state.nameArtist}
+						</div>
 						{words.map((word) =>
 							word
 								.split('')
