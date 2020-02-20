@@ -13,9 +13,12 @@ const Word = () => {
 
 				return (
 					<div id="container-word">
-						<div>
-							{context.state.nameArtist}
+						<div id="container-postit">
+							<div id="text-postit">
+								{context.state.nameArtist}
+							</div>
 						</div>
+
 						{words.map((word) =>
 							word
 								.split('')

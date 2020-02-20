@@ -18,3 +18,20 @@
 		height: 20vh;
 	}
 }
+
+#container-postit {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent;
+	height: 10vh;
+}
+
+#text-postit {
+	background-image: url('../../../assets/images/postit.jpg');
+	padding-left: 1vw;
+	padding-right: 1vw;
+	color: #000080;
+	font-size: 25px;
+}
