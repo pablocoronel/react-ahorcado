@@ -19,22 +19,23 @@ const Word = () => {
 							</div>
 						</div>
 
-						{words.map((word) =>
-							word
-								.split('')
-								.map((letter) => {
-									if (
-										chosenLetters.some(
-											(item) => item === letter
-										)
-									) {
-										return letter;
-									} else {
-										return '_'.concat(' ');
-									}
-								})
-								.concat(' ')
-						)}
+						<div id="container-track">
+							{words.map((word) => (
+								<span className="spaceBetweenWords">
+									{word.split('').map((letter) => {
+										if (
+											chosenLetters.some(
+												(item) => item === letter
+											)
+										) {
+											return letter;
+										} else {
+											return '_';
+										}
+									})}
+								</span>
+							))}
+						</div>
 					</div>
 				);
 			}}
