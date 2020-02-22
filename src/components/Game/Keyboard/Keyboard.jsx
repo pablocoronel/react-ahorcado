@@ -4,33 +4,54 @@ import Context from './../../../context/context';
 import { Button } from 'react-bootstrap';
 
 const letters = [
-	'q',
-	'w',
-	'e',
-	'r',
-	't',
-	'y',
-	'u',
-	'i',
-	'o',
-	'p',
+	'0',
+	'1',
+	'2',
+	'3',
+	'4',
+	'5',
+	'6',
+	'7',
+	'8',
+	'9',
 	'a',
-	's',
+	'b',
+	'c',
 	'd',
+	'e',
 	'f',
 	'g',
 	'h',
+	'i',
 	'j',
 	'k',
 	'l',
-	'z',
-	'x',
-	'c',
-	'v',
-	'b',
+	'm',
 	'n',
 	'ñ',
-	'm'
+	'o',
+	'p',
+	'q',
+	'r',
+	's',
+	't',
+	'u',
+	'v',
+	'w',
+	'x',
+	'y',
+	'z',
+	'¿',
+	'?',
+	'!',
+	'¡',
+	'-',
+	'_',
+	'.',
+	',',
+	'/',
+	'*',
+	'+'
 ];
 const initialKeys = [];
 
@@ -39,7 +60,7 @@ letters
 	.map((letter, index) =>
 		initialKeys.push({
 			value: letter.toUpperCase(),
-			disabled: false,
+			status: null,
 			order: index
 		})
 	)
@@ -60,20 +81,11 @@ const Keyboard = () => {
 		}
 
 		const selectedKey = keys.find((key) => key.value === letter);
-		selectedKey.disabled = true;
 
-		const updatedKeys = keys.filter((key) => key.value !== letter);
-		updatedKeys.push(selectedKey);
-		updatedKeys.sort((a, b) => a.order - b.order);
-
-		// update local state
-		setKeys(updatedKeys);
-
-		// data in context
-		contextAttempts(letter, context);
+		contextAttempts(letter, context, selectedKey);
 	};
 
-	const contextAttempts = (letter, context) => {
+	const contextAttempts = (letter, context, selectedKey) => {
 		// update chosen letters in context state
 		const newChosenLetters = [...context.state.chosenLetters, letter];
 		context.updateChosenLetters(newChosenLetters);
@@ -86,15 +98,24 @@ const Keyboard = () => {
 		// update count of guessed letters
 		if (letterInTrack === null) {
 			context.updateFailedAttempts();
+			selectedKey.status = 'failed';
 
 			if (context.state.resultGame === null)
 				contextResultGame(context, 'fail', 1);
 		} else {
 			context.updatedGuessedLetters(letterInTrack.length);
+			selectedKey.status = 'guessed';
 
 			if (context.state.resultGame === null)
 				contextResultGame(context, 'correct', letterInTrack.length);
 		}
+
+		// update local state (key)
+		const newStateKeys = keys.filter((key) => key.value !== letter);
+		newStateKeys.push(selectedKey);
+		newStateKeys.sort((a, b) => a.order - b.order);
+
+		setKeys(newStateKeys);
 	};
 
 	const contextResultGame = (context, attempt, quantity) => {
@@ -137,10 +158,10 @@ const Keyboard = () => {
 						<div
 							className={
 								'key ' +
-								(context.state.chosenLetters.some(
-									(item) => item === key.value
-								)
-									? 'disabledKey'
+								(key.status === 'guessed'
+									? 'guessedKey'
+									: key.status === 'failed'
+									? 'failedKey'
 									: '')
 							}
 							key={'key-' + key.value}

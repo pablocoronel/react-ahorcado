@@ -92,7 +92,7 @@ const searchRandomTrack = (idArtist, updateInfoTrackArtist) => {
 		.then((res) => res.json())
 		.catch((error) => console.error('Error:', error))
 		.then((response) => {
-			console.log('Success top tracks:', response);
+			// console.log('Success top tracks:', response);
 
 			if (response.tracks.length > 0) {
 				const randomTrackIndex = Math.floor(

@@ -1,4 +1,9 @@
-.container-fluid{
-  background-color: #452155;
-  height: 100vh;
+.container-fluid {
+	background-color: #452155;
+	height: 100vh;
+}
+
+@font-face {
+	font-family: 'Moon Flower Bold';
+	src: url('../../assets/fonts/Moon Flower Bold.ttf');
 }

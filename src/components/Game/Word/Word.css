@@ -1,11 +1,7 @@
-@font-face {
-	font-family: 'Moon Flower';
-	src: url('../../../assets/fonts/Moon Flower Bold.ttf');
-}
-
 #container-word {
 	background-color: transparent;
 	position: relative;
+	height: 40vh;
 }
 
 #container-postit {
@@ -23,13 +19,13 @@
 	padding-right: 1vw;
 	color: #000080;
 	font-size: 25px;
-	font-family: Moon Flower;
+	font-family: "Moon Flower Bold";
 }
 
 #container-track {
 	display: flex;
 	flex-wrap: wrap;
-	font-family: Moon Flower;
+	font-family: "Moon Flower Bold";
 	font-size: 10vh;
 	font-weight: 900;
 	color: #000080;

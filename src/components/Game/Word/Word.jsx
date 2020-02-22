@@ -41,8 +41,6 @@ const Word = () => {
 			}}
 		</Context.Consumer>
 	);
-
-	// <div>'so'</div>;
 };
 
 export default Word;

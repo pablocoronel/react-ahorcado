@@ -2,20 +2,47 @@
 	background-color: transparent;
 	position: relative;
 	height: 50vh;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 10vh;
+}
+
+
+.key {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	height: 10vh;
+	width: 50px;
+	font-size: 7vh;
+	font-family: 'Moon Flower Bold';
+	color: #000000;
+	font-weight: 900;
+	margin-right: 1vh;
+}
+
+.guessedKey {
+	background-color: transparent;
+	border-radius: 50%;
+	border: 1vh solid rgba(81, 233, 11, 0.877);
+}
+
+.failedKey {
+	background-color: transparent;
+	border-radius: 50%;
+	border: 1vh solid rgb(192, 0, 0);
 }
 
 @media (max-width: 768px) {
 	#container-keyboard {
 		height: 40vh;
+		margin-top: 0vh;
 	}
-}
 
-.key {
-	background-color: tan;
-	height: 10vh;
-	width: 50px;
-}
-
-.disabledKey {
-	background-color: tomato;
+	.key{
+		height: 10vw;
+		width: 10vw;
+		font-size: 4vw;
+	}
 }
