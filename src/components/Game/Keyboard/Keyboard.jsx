@@ -45,9 +45,12 @@ const letters = [
 	'?',
 	'!',
 	'¡',
+	'(',
+	')',
 	'-',
 	'_',
 	'.',
+	':',
 	',',
 	'/',
 	'*',
@@ -91,10 +94,20 @@ const Keyboard = () => {
 		context.updateChosenLetters(newChosenLetters);
 
 		// update failed attempts in context state
-		const letterInTrack = context.state.trackArtist.match(
-			new RegExp(letter, 'g')
-		);
-
+		let search =
+			letter.includes('+') ||
+			letter.includes('.') ||
+			letter.includes('*') ||
+			letter.includes('?') ||
+			letter.includes('(') ||
+			letter.includes(')')
+				? '\\' + letter
+				: letter;
+		console.log(search);
+		const regExp = new RegExp(search, 'g');
+		console.log(regExp);
+		const letterInTrack = context.state.trackArtist.match(regExp);
+		console.log(letterInTrack);
 		// update count of guessed letters
 		if (letterInTrack === null) {
 			context.updateFailedAttempts();

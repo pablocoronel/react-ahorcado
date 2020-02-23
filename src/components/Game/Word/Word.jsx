@@ -21,7 +21,10 @@ const Word = () => {
 
 						<div id="container-track">
 							{words.map((word) => (
-								<span className="spaceBetweenWords">
+								<span
+									className="spaceBetweenWords"
+									key={'space-' + word}
+								>
 									{word.split('').map((letter) => {
 										if (
 											chosenLetters.some(
