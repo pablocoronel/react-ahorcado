@@ -1,16 +1,19 @@
 #container-person {
-	background-color: transparent;
 	display: flex;
-	align-items: center;
-	height: 100vh;
+	background-color: transparent;
+	height: 80vh;
+	margin-top: 10vh;
+	overflow: hidden;
 }
 
-#container-person img{
+#container-person img {
 	max-width: 40vw;
 }
 
-@media(max-width: 768px){
+@media (max-width: 768px) {
 	#container-person {
+		justify-content: center;
 		height: 40vh;
+		margin-top: auto;
 	}
 }

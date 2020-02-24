@@ -32,6 +32,16 @@ const Word = () => {
 											)
 										) {
 											return letter;
+										}
+
+										if (
+											context.state.resultGame === false
+										) {
+											return (
+												<span className="unguessedLetter">
+													{letter}
+												</span>
+											);
 										} else {
 											return '_';
 										}

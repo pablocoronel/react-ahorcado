@@ -15,25 +15,6 @@ const Person = () => {
 		<div id="container-person">
 			<Context.Consumer>
 				{(context) => {
-					let resultado = null;
-					switch (context.state.resultGame) {
-						case null:
-							resultado = 'en juego';
-							break;
-
-						case true:
-							resultado = 'ganaste';
-							break;
-
-						case false:
-							resultado = 'perdiste';
-							break;
-
-						default:
-							resultado = null;
-							break;
-					}
-
 					let personImage = null;
 
 					switch (context.state.failedAttempts) {
@@ -75,14 +56,10 @@ const Person = () => {
 					}
 
 					return (
-						<div>
-							<div>resultado: {resultado}</div>
-
-							<img
-								src={personImage}
-								alt={context.state.failedAttempts}
-							/>
-						</div>
+						<img
+							src={personImage}
+							alt={context.state.failedAttempts}
+						/>
 					);
 				}}
 			</Context.Consumer>

@@ -93,7 +93,7 @@ const Keyboard = () => {
 		const newChosenLetters = [...context.state.chosenLetters, letter];
 		context.updateChosenLetters(newChosenLetters);
 
-		// update failed attempts in context state
+		// escape special characters for regular expression
 		let search =
 			letter.includes('+') ||
 			letter.includes('.') ||
@@ -103,12 +103,11 @@ const Keyboard = () => {
 			letter.includes(')')
 				? '\\' + letter
 				: letter;
-		console.log(search);
+
 		const regExp = new RegExp(search, 'g');
-		console.log(regExp);
 		const letterInTrack = context.state.trackArtist.match(regExp);
-		console.log(letterInTrack);
-		// update count of guessed letters
+
+		// update failed attempts in context state
 		if (letterInTrack === null) {
 			context.updateFailedAttempts();
 			selectedKey.status = 'failed';
@@ -116,6 +115,7 @@ const Keyboard = () => {
 			if (context.state.resultGame === null)
 				contextResultGame(context, 'fail', 1);
 		} else {
+			// update count of guessed letters
 			context.updatedGuessedLetters(letterInTrack.length);
 			selectedKey.status = 'guessed';
 
@@ -158,11 +158,34 @@ const Keyboard = () => {
 		<div id="container-keyboard">
 			<Context.Consumer>
 				{(context) => {
+					let result = null;
+					switch (context.state.resultGame) {
+						case null:
+							result = '';
+							break;
+
+						case true:
+							result = 'ganaste';
+							break;
+
+						case false:
+							result = 'perdiste';
+							break;
+
+						default:
+							result = null;
+							break;
+					}
+
 					// won or lose
 					if (context.state.resultGame != null) {
 						return (
 							<div>
-								<Button href="/">Jugar de nuevo</Button>
+								<div>{result}</div>
+
+								<Button id="replay" href="/">
+									Jugar de nuevo
+								</Button>
 							</div>
 						);
 					}

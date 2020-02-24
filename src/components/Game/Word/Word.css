@@ -37,6 +37,10 @@
 	margin-right: 5vh;
 }
 
+#container-track .unguessedLetter {
+	color: #ff0000;
+}
+
 @media (max-width: 768px) {
 	#container-word {
 		height: 20vh;
