@@ -21,7 +21,7 @@ const FormSearch = (props) => {
 
 	return (
 		<Row>
-			<Col xs={12} md={{ span: 4, offset: 4 }} id="formulario">
+			<Col xs={12} md={{ span: 4, offset: 4 }} id="form">
 				<h1>Buscá un músico</h1>
 
 				<Form onSubmit={handleSubmit}>

@@ -5,6 +5,10 @@
 	height: 100vh;
 }
 
+#container-person img{
+	max-width: 40vw;
+}
+
 @media(max-width: 768px){
 	#container-person {
 		height: 40vh;

@@ -1,9 +1,9 @@
-#formulario{
-    background-color: cyan !important;
-    height: 30vh;
-    margin-top: 5vh;
-    text-align: center;
+#form {
+	background-color: cyan !important;
+	height: 30vh;
+	margin-top: 5vh;
+	text-align: center;
 }
-h1{
-    color: cornsilk;
+#form h1 {
+	color: cornsilk;
 }

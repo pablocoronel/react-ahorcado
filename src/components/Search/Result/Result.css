@@ -1,17 +1,17 @@
-#resultados{
-    background-color: cyan !important;
-    height: 40vh;
-    margin-top: 15vh;
-    text-align: center;
+#results {
+	background-color: cyan !important;
+	height: 40vh;
+	margin-top: 15vh;
+	text-align: center;
 }
-h1{
-    color: cornsilk;
-}
-
-img{
-    max-height: 25vh;
+#results h1 {
+	color: cornsilk;
 }
 
-#play{
-    margin-top: 1vw;
+#results img {
+	max-height: 25vh;
+}
+
+#results #play {
+	margin-top: 1vw;
 }

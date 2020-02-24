@@ -18,7 +18,7 @@ const Result = (props) => {
 
 	return (
 		<Row>
-			<Col xs={12} md={{ span: 4, offset: 4 }} id="resultados">
+			<Col xs={12} md={{ span: 4, offset: 4 }} id="results">
 				<Context.Consumer>
 					{(context) =>
 						props.artist.map((artist) => (

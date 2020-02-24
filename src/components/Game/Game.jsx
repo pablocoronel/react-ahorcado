@@ -7,7 +7,7 @@ import Keyboard from './Keyboard/Keyboard';
 
 const Game = (props) => {
 	return (
-		<Row id="wrapper">
+		<Row id="container-game">
 			<Col xs={12} md={4}>
 				<Person />
 			</Col>
