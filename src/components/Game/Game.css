@@ -1,6 +1,6 @@
 #container-game {
-    height: 100vh;
+    display: flex;
+    min-height: 100vh;
     background-image: url('../../assets/images/paper.jpg');
     background-size: cover;
-    background-color: #FFFFFF;
 }

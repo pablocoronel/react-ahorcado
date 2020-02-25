@@ -1,7 +1,7 @@
 #container-word {
 	background-color: transparent;
 	position: relative;
-	height: 40vh;
+	height: 38vh;
 }
 
 #container-postit {
@@ -10,7 +10,8 @@
 	align-items: center;
 	justify-content: center;
 	background-color: transparent;
-	height: 10vh;
+	height: 5vh;
+	margin-top: 2vh;
 }
 
 #text-postit {
@@ -18,7 +19,7 @@
 	padding-left: 1vw;
 	padding-right: 1vw;
 	color: #000080;
-	font-size: 25px;
+	font-size: 4vh;
 	font-family: 'Moon Flower Bold';
 }
 
@@ -26,7 +27,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	font-family: 'Moon Flower Bold';
-	font-size: 10vh;
+	font-size: 12vh;
 	font-weight: 900;
 	color: #000080;
 	text-align: center;
@@ -44,14 +45,51 @@
 
 @media (max-width: 768px) {
 	#container-word {
-		height: 20vh;
+		height: 30vh;
+		background-color: transparent;
+	}
+
+	#container-postit {
+		height: 5vh;
+		margin-top: 0vh;
+	}
+
+	#text-postit {
+		font-size: 3vh;
 	}
 
 	#container-track {
-		font-size: 10vw;
+		font-size: 5vh;
 	}
 
 	#container-track .spaceBetweenWords {
 		margin-right: 5vw;
+	}
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+	#container-word {
+		float: left;
+		height: 55vh;
+		width: 70vw;
+		bottom: 57vw;
+		left: 30vw;
+	}
+
+	#container-postit {
+		height: 4vh;
+		margin-top: 4vh;
+	}
+
+	#text-postit {
+		font-size: 3vw;
+	}
+
+	#container-track {
+		font-size: 5vw;
+	}
+
+	#container-track .spaceBetweenWords {
+		margin-right: 2.5vw;
 	}
 }

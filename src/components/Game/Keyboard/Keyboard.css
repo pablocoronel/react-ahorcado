@@ -4,11 +4,11 @@
 	justify-content: center;
 	position: relative;
 	background-color: transparent;
-	height: 50vh;
+	min-height: 50vh;
 	margin-top: 10vh;
 }
 
-#replay{
+#replay {
 	height: fit-content;
 }
 
@@ -17,9 +17,9 @@
 	justify-content: center;
 	align-items: center;
 	background-color: transparent;
-	height: 10vh;
-	width: 50px;
-	font-size: 7vh;
+	height: 8vh;
+	width: 8vh;
+	font-size: 8vh;
 	font-family: 'Moon Flower Bold';
 	color: #000000;
 	font-weight: 900;
@@ -40,13 +40,31 @@
 
 @media (max-width: 768px) {
 	#container-keyboard {
-		height: 40vh;
+		min-height: 40vh;
 		margin-top: 0vh;
+		background-color: transparent;
 	}
 
 	#container-keyboard .key {
-		height: 10vw;
-		width: 10vw;
-		font-size: 4vw;
+		height: 8vw;
+		width: 8vw;
+		font-size: 5vw;
+	}
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+	#container-keyboard {
+		float: left;
+		width: 70vw;
+		height: 50vh;
+		bottom: 105vh;
+		left: 30vw;
+		background-color: transparent;
+	}
+
+	#container-keyboard .key {
+		height: 5vw;
+		width: 5vw;
+		font-size: 5vw;
 	}
 }
