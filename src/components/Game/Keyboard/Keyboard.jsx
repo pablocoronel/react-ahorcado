@@ -74,11 +74,12 @@ letters
 const Keyboard = () => {
 	const [keys, setKeys] = useState(initialKeys);
 
+	// reset status of keys when unmount the component
 	useEffect(() => {
-		// returned function will be called on component unmount
 		return () => {
 			keys.forEach((key) => (key.status = null));
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleTouchedKey = (letter, context) => {
