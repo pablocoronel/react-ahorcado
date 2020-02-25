@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Keyboard.css';
 import Context from './../../../context/context';
 import { Button } from 'react-bootstrap';
@@ -56,6 +56,7 @@ const letters = [
 	'*',
 	'+'
 ];
+
 const initialKeys = [];
 
 // set keyboard with letters
@@ -72,6 +73,13 @@ letters
 // component
 const Keyboard = () => {
 	const [keys, setKeys] = useState(initialKeys);
+
+	useEffect(() => {
+		// returned function will be called on component unmount
+		return () => {
+			keys.forEach((key) => (key.status = null));
+		};
+	}, []);
 
 	const handleTouchedKey = (letter, context) => {
 		const chosenLetters = context.state.chosenLetters;

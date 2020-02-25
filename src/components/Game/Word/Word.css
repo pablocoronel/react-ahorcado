@@ -34,7 +34,8 @@
 }
 
 #container-track .spaceBetweenWords {
-	margin-right: 5vh;
+	margin-right: 2.5vh;
+	margin-left: 2.5vh;
 }
 
 #container-track .unguessedLetter {
