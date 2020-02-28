@@ -1,6 +1,16 @@
 #container-game {
-    display: flex;
-    min-height: 100vh;
-    background-image: url('../../assets/images/paper.jpg');
-    background-size: cover;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: stretch;
+	min-height: 100vh;
+	background-image: url('../../assets/images/paper.jpg');
+	background-size: cover;
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+	#container-game-panel {
+		display: flex;
+		flex-direction: column;
+	}
 }

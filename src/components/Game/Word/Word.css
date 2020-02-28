@@ -27,7 +27,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	font-family: 'Moon Flower Bold';
-	font-size: 12vh;
+	font-size: 4vw;
 	font-weight: 900;
 	color: #000080;
 	text-align: center;
@@ -59,7 +59,7 @@
 	}
 
 	#container-track {
-		font-size: 5vh;
+		font-size: 6vw;
 	}
 
 	#container-track .spaceBetweenWords {
@@ -67,18 +67,24 @@
 	}
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+	#container-track {
+		font-size: 4vw;
+	}
+}
+
 @media (max-width: 768px) and (orientation: landscape) {
 	#container-word {
-		float: left;
-		height: 55vh;
-		width: 70vw;
-		bottom: 57vw;
-		left: 30vw;
+		height: unset;
+		background-color: transparent;
+		height: 53vh;
 	}
 
 	#container-postit {
-		height: 4vh;
-		margin-top: 4vh;
+		position: relative;
+		top: 0vh;
+		height: 10vh;
+		background-color: transparent;
 	}
 
 	#text-postit {

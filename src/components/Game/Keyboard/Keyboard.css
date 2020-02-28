@@ -54,11 +54,8 @@
 
 @media (max-width: 768px) and (orientation: landscape) {
 	#container-keyboard {
-		float: left;
-		width: 70vw;
-		height: 50vh;
-		bottom: 105vh;
-		left: 30vw;
+		min-height: unset;
+		height: 45vh;
 		background-color: transparent;
 	}
 
