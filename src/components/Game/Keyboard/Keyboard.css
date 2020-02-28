@@ -27,15 +27,13 @@
 }
 
 #container-keyboard .guessedKey {
-	background-color: transparent;
-	border-radius: 50%;
-	border: 1vh solid rgba(81, 233, 11, 0.877);
+	background-image: url('../../../assets/images/guessed.png');
+	background-size: contain;
 }
 
 #container-keyboard .failedKey {
-	background-color: transparent;
-	border-radius: 50%;
-	border: 1vh solid rgb(192, 0, 0);
+	background-image: url('../../../assets/images/failed.png');
+	background-size: contain;
 }
 
 @media (max-width: 768px) {
