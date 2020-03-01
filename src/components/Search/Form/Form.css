@@ -1,9 +1,150 @@
-#form {
-	background-color: cyan !important;
+#container-form {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	background-color: #ffffff;
 	height: 30vh;
-	margin-top: 5vh;
+	width: 30vw;
+	margin: 0 auto;
+	margin-top: 2vh;
 	text-align: center;
+	border: 0.5vw #ffffff solid;
+	border-radius: 25px;
 }
-#form h1 {
-	color: cornsilk;
+
+#container-form #inside-border {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	border: 0.5vw solid #000000;
+	border-radius: 25px;
+}
+
+#container-form span {
+	color: #000000;
+	font-size: 7vh;
+	height: 7vh;
+	margin-top: 1vh;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-family: Cramaten, serif;
+}
+
+#container-form input[type='text'] {
+	position: relative;
+	margin: 0 auto;
+	width: 25vw;
+	height: 6vh;
+	font-size: 3vh;
+	border-top: 0.3vh #000000 solid;
+	border-right: 0.3vh #ffffff solid;
+	border-bottom: 0.3vh #000000 solid;
+	border-left: 0.3vh #ffffff solid;
+}
+
+#container-form input[type='text']:focus {
+	box-shadow: 0 0 0;
+}
+
+#container-form button {
+	position: relative;
+	margin: 0 auto;
+	bottom: 0.5vh;
+	height: 5vh;
+	width: 8vw;
+	background-color: #000000;
+	color: #ffffff;
+	line-height: 1vh;
+	font-size: 1.5vw;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+		'Lucida Sans', Arial, sans-serif;
+	border-radius: 10px;
+	border-top: 0.3vh #000000 solid;
+	border-right: 0.3vh #000000 solid;
+	border-bottom: 0.3vh #000000 solid;
+	border-left: 0.3vh #000000 solid;
+}
+
+/* small */
+@media (max-width: 768px) {
+	#container-form {
+		height: 23vh;
+		width: 60vw;
+		margin-left: 20vw;
+	}
+
+	#container-form span {
+		font-size: 5vh;
+	}
+
+	#container-form input[type='text'] {
+		width: 50vw;
+		height: 6vh;
+	}
+
+	#container-form button {
+		position: relative;
+		margin: 0 auto;
+		margin-top: 1vh;
+		height: 4vh;
+		width: 25vw;
+		font-size: 5vw;
+	}
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+	#container-form {
+		height: 30vh;
+		width: 40vw;
+		margin: 0 auto;
+		margin-top: 2vh;
+	}
+
+	#container-form span {
+		font-size: 7vh;
+	}
+
+	#container-form input[type='text'] {
+		width: 35vw;
+		font-size: 5vh;
+	}
+
+	#container-form button {
+		position: relative;
+		margin: 0 auto;
+		margin-bottom: 3vh;
+		height: 5vh;
+		width: 12vw;
+		font-size: 5vh;
+	}
+}
+
+/* medium */
+@media (min-width: 768px) and (max-width: 1024px) {
+	#container-form {
+		height: 23vh;
+		width: 60vw;
+		margin-left: 20vw;
+	}
+	#container-form span {
+		font-size: 5vh;
+	}
+
+	#container-form input[type='text'] {
+		width: 50vw;
+		height: 6vh;
+	}
+
+	#container-form button {
+		position: relative;
+		margin: 0 auto;
+		margin-top: 1vh;
+		height: 4vh;
+		width: 25vw;
+		font-size: 5vw;
+	}
 }

@@ -9,3 +9,8 @@
 	font-family: 'Moon Flower Bold';
 	src: url('../../assets/fonts/Moon Flower Bold.ttf');
 }
+
+@font-face {
+	font-family: 'Cramaten';
+	src: url('../../assets/fonts/Cramaten.ttf');
+}

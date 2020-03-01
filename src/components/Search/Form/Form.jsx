@@ -21,21 +21,26 @@ const FormSearch = (props) => {
 
 	return (
 		<Row>
-			<Col xs={12} md={{ span: 4, offset: 4 }} id="form">
-				<h1>Buscá un músico</h1>
+			{/* xs={12} md={{ span: 4, offset: 4 }} */}
+			<Col>
+				<div id="container-form">
+					<div id="inside-border">
+						<span>Buscá un músico</span>
 
-				<Form onSubmit={handleSubmit}>
-					<Form.Group>
-						<Form.Control
-							type="text"
-							placeholder="Rolling stones"
-						/>
-					</Form.Group>
+						<Form onSubmit={handleSubmit}>
+							<Form.Group>
+								<Form.Control
+									type="text"
+									placeholder="Rolling stones"
+								/>
+							</Form.Group>
 
-					<Button variant="primary" type="submit">
-						Buscar
-					</Button>
-				</Form>
+							<Button variant="primary" type="submit">
+								Buscar
+							</Button>
+						</Form>
+					</div>
+				</div>
 			</Col>
 		</Row>
 	);
