@@ -1,5 +1,7 @@
 .container-fluid {
-	background-color: transparent;
+	background-image: url('../../assets/images/cuaderno.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 	height: 100vh;
 }
 
