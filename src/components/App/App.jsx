@@ -9,10 +9,10 @@ import NotFound from './../NotFound/NotFound';
 const App = () => {
 	return (
 		<Provider>
-			<Router>
+			<Router basename="/ahorcado">
 				<Switch>
-					<Route exact path="/" component={Search} />
-					<Route exact path="/game" component={Game} />
+					<Route path="/" exact component={Search} />
+					<Route path="/game" exact component={Game} />
 					<Route component={NotFound} />
 				</Switch>
 			</Router>

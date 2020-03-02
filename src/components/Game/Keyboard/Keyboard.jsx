@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Keyboard.css';
 import Context from './../../../context/context';
-import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const letters = [
 	'0',
@@ -192,9 +192,15 @@ const Keyboard = () => {
 							<div>
 								<div>{result}</div>
 
-								<Button id="replay" href="/">
+								<Link
+									className="btn btn-primary"
+									id="replay"
+									to={{
+										pathname: '/'
+									}}
+								>
 									Jugar de nuevo
-								</Button>
+								</Link>
 							</div>
 						);
 					}

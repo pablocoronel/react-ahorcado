@@ -1,14 +1,20 @@
 import React from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './NotFound.css';
 
 const NotFound = () => {
 	return (
 		<Container fluid={true} id="container-not-found">
 			<div>
-				<Button variant="primary" href="/">
+				<Link
+					className="btn btn-primary"
+					to={{
+						pathname: '/'
+					}}
+				>
 					Ir al inicio
-				</Button>
+				</Link>
 			</div>
 		</Container>
 	);
