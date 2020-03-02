@@ -1,0 +1,14 @@
+#container-search {
+	background-image: url('../../assets/images/cuaderno.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+}
+
+@media (max-width: 768px) and (orientation: portrait){
+	#container-search {
+		background-image: url('../../assets/images/cuaderno-mobile.png');
+		height: unset;
+		min-height: 100vh;
+	}
+}
