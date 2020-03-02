@@ -11,17 +11,9 @@ const App = () => {
 		<Provider>
 			<Router>
 				<Switch>
-					<Route exact path="/">
-						<Search />
-					</Route>
-
-					<Route path="/game">
-						<Game />
-					</Route>
-
-					<Route path="*">
-						<NotFound />
-					</Route>
+					<Route exact path="/" component={Search} />
+					<Route exact path="/game" component={Game} />
+					<Route component={NotFound} />
 				</Switch>
 			</Router>
 		</Provider>
