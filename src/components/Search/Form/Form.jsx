@@ -21,7 +21,6 @@ const FormSearch = (props) => {
 
 	return (
 		<Row>
-			{/* xs={12} md={{ span: 4, offset: 4 }} */}
 			<Col>
 				<div id="container-form">
 					<div id="inside-border">

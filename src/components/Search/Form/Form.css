@@ -148,3 +148,24 @@
 		font-size: 5vw;
 	}
 }
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	#container-form {
+		height: 30vh;
+		width: 40vw;
+		margin-left: 30vw;
+	}
+
+	#container-form input[type='text'] {
+		width: 35vw;
+		height: 6vh;
+	}
+
+	#container-form button {
+		position: relative;
+		margin: 0 auto;
+		height: 6vh;
+		width: 12vw;
+		font-size: 4vh;
+	}
+}

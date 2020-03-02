@@ -18,59 +18,62 @@ const Result = (props) => {
 
 	return (
 		<Row>
-			<Col xs={12} md={{ span: 4, offset: 4 }} id="results">
+			<Col>
 				<Context.Consumer>
-					{(context) =>
-						props.artist.map((artist) => (
-							<div key={'artist-' + artist.id}>
-								<Row id="title">
-									<Col>{artist.name}</Col>
-								</Row>
+					{(context) => (
+						<div id="results">
+							{props.artist.map((artist) => (
+								<div key={'artist-' + artist.id} id="artist">
+									<Row id="title">
+										<Col>{artist.name}</Col>
+									</Row>
 
-								{artist.id !== null && (
-									<div>
-										<Row id="image">
-											<Col>
-												<Image
-													src={
-														artist.image !== null
-															? artist.image
-															: noImage
-													}
-													thumbnail
-													alt={artist.name}
-												/>
-											</Col>
-										</Row>
-
-										<Row id="play">
-											<Col>
-												<Link to="/game">
-													<Button
-														variant="success"
-														renderas="button"
-														onClick={(
-															event,
-															idArtist = artist.id,
-															updateInfoTrackArtist = context.updateInfoTrackArtist
-														) =>
-															handlePlay(
-																event,
-																idArtist,
-																updateInfoTrackArtist
-															)
+									{artist.id !== null && (
+										<div>
+											<Row id="image">
+												<Col>
+													<Image
+														src={
+															artist.image !==
+															null
+																? artist.image
+																: noImage
 														}
-													>
-														<span>Jugar!</span>
-													</Button>
-												</Link>
-											</Col>
-										</Row>
-									</div>
-								)}
-							</div>
-						))
-					}
+														thumbnail
+														alt={artist.name}
+													/>
+												</Col>
+											</Row>
+
+											<Row id="play">
+												<Col>
+													<Link to="/game">
+														<Button
+															variant="success"
+															renderas="button"
+															onClick={(
+																event,
+																idArtist = artist.id,
+																updateInfoTrackArtist = context.updateInfoTrackArtist
+															) =>
+																handlePlay(
+																	event,
+																	idArtist,
+																	updateInfoTrackArtist
+																)
+															}
+														>
+															<span>Jugar!</span>
+														</Button>
+													</Link>
+												</Col>
+											</Row>
+										</div>
+									)}
+								</div>
+							))}
+						</div>
+					)}
 				</Context.Consumer>
 			</Col>
 		</Row>
