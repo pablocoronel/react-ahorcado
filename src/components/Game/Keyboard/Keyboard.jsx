@@ -174,7 +174,7 @@ const Keyboard = () => {
 							break;
 
 						case true:
-							result = 'ganaste';
+							result = '¡ganaste!';
 							break;
 
 						case false:
@@ -189,8 +189,8 @@ const Keyboard = () => {
 					// won or lose
 					if (context.state.resultGame != null) {
 						return (
-							<div>
-								<div>{result}</div>
+							<div id="tornPaper">
+								<span>{result}</span>
 
 								<Link
 									className="btn btn-primary"

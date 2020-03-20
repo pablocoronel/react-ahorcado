@@ -36,6 +36,38 @@
 	background-size: contain;
 }
 
+#tornPaper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	background-image: url('../../../assets/images/borde.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 30vw;
+	height: 30vh;
+}
+
+#tornPaper span {
+	color: #25059b;
+	font-family: 'Moon Flower Bold';
+	font-size: 7vh;
+	font-weight: bold;
+	margin-top: 3vh;
+}
+
+#tornPaper a {
+	position: relative;
+	margin-bottom: 3vh;
+	border-color: rgb(216, 203, 25);
+	background-image: url('../../../assets/images/postit.jpg');
+	height: 7vh;
+	color: rgb(160, 36, 36);
+	font-family: Cramaten;
+	font-size: 2vw;
+}
+
 @media (max-width: 768px) {
 	#container-keyboard {
 		min-height: 40vh;
@@ -47,6 +79,23 @@
 		height: 8vw;
 		width: 8vw;
 		font-size: 5vw;
+	}
+
+	#tornPaper {
+		background-position: center top;
+		padding-top: 2vw;
+		width: 80vw;
+		height: 30vh;
+	}
+
+	#tornPaper span {
+		font-size: 6vh;
+	}
+
+	#tornPaper a {
+		margin-bottom: 15vh;
+		height: 6vh;
+		font-size: 8vw;
 	}
 }
 
@@ -61,5 +110,41 @@
 		height: 5vw;
 		width: 5vw;
 		font-size: 5vw;
+	}
+
+	#tornPaper {
+		background-position: center center;
+	}
+
+	#tornPaper span {
+		font-size: 10vh;
+	}
+
+	#tornPaper a {
+		margin-bottom: 5vh;
+		height: 10vh;
+		width: 30vh;
+		font-size: 6vh;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	#tornPaper a {
+		font-size: 6vw;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	#tornPaper {
+		padding-top: 0vw;
+		width: 80vw;
+		height: 20vh;
+		background-position: center center;
+	}
+
+	#tornPaper a {
+		margin-bottom: 2vh;
+		height: 6vh;
+		font-size: 4vw;
 	}
 }
