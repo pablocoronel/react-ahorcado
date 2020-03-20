@@ -94,7 +94,7 @@ const searchRandomTrack = async (idArtist, updateInfoTrackArtist) => {
 		.then((res) => res.json())
 		.catch((error) => console.error('Error:', error))
 		.then((response) => {
-			console.log('Success album:', response);
+			// console.log('Success album:', response);
 
 			if (response.items.length > 0) {
 				const randomAlbumIndex = Math.floor(
